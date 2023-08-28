@@ -16,7 +16,8 @@ function login() {
   const Login =async ()=>{
      const userPost = await axios.post('/api/users/login',user)
    console.log(userPost.data)
-     //  Router.push('/profile')
+       
+       Router.push('/profile')
   }
 
   return (
