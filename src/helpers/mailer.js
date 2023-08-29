@@ -4,6 +4,7 @@ import nodemailer from 'nodemailer'
 
 
 export const sendEmail = async ({ email, emailType, userId }) =>{
+    console.log(email, emailType, userId )
         try {
             const hashedToken = await bcryptjs.hash(userId.toString(), 10);
 
@@ -14,8 +15,8 @@ export const sendEmail = async ({ email, emailType, userId }) =>{
                     verifyTokenExpiry : Date.now() + 3600000 });
             }else if(emailType === "RESET"){
                 await User.findByIdAndUpdate(userId, {
-                    forgotPasswordToken: hashedToken , 
-                    forgotPasswordTokenExpiry : Date.now() + 3600000
+                    forgotPassword: hashedToken , 
+                    forgotPasswordExpiry: Date.now() + 3600000
             });
             }
 
@@ -52,7 +53,6 @@ export const sendEmail = async ({ email, emailType, userId }) =>{
             }
 
             const mailResponse = await transport.sendMail(mailOptions);
-           console.log(mailResponse)
             return mailResponse;
 
             

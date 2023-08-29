@@ -11,13 +11,10 @@ function Forgotpassword(){
  const onForgotEmailVerify = async () => {
 
     try {
-        const headers = {
-            'Content-Type': 'application/json',
-            // Add more headers as needed
-        }
-      const response = await axios.post("/api/users/forgotpassword", userEmail ,{ headers});
+        
+      const response = await axios.post("/api/users/forgotpassword", {userEmail} );
       
-      console.log("Email Found", response.data);
+      console.log("Email Found", response);
     } catch (error:any) {
     
       throw new Error(error);

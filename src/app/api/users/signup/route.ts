@@ -3,10 +3,11 @@ import dbConnection from '@/dbConfig/dbConfig.js'
 import { NextRequest,NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
 
-dbConnection()
 
 export async function POST(reqest:NextRequest){
   try{
+
+await dbConnection()    
     const reqBody = await reqest.json()
 
    const {userName,email,password} =reqBody
