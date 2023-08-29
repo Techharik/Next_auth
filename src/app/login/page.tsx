@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
-
+import Link from 'next/link'
 
 
 function login() {
@@ -47,7 +47,10 @@ function login() {
       <button onClick={Login}> 
         Login
       </button>
-
+      <br />
+      <Link href='/forgotpassword'>
+        Forgot Password
+      </Link>
     </div>
   )
 }
